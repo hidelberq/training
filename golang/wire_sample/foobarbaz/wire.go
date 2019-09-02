@@ -1,10 +1,13 @@
-package wire
+package foobarbaz
 
 // My External Storage "google/wireを使ったDIとDI関数のシグネチャについて #go"
 // https://budougumi0617.github.io/2018/12/14/how-to-use-google-wire/
 
 import (
 	"context"
+
+	"github.com/google/wire"
+
 	"github.com/pkg/errors"
 )
 
@@ -36,3 +39,4 @@ func ProvideBaz(ctx context.Context, bar Bar) (Baz, error) {
 	return Baz{X: bar.X}, nil
 }
 
+var superSet = wire.NewSet(ProvideFoo, ProvideBar, ProvideBaz)
